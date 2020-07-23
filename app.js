@@ -357,10 +357,10 @@ const geocoder = new MapboxGeocoder({
 function sortByDistance(selectedPoint) {
     const options = { units: "miles" };
     if (filteredGeojson.features.length > 0) {
-        let data = filteredGeojson
+        var data = filteredGeojson
     }
     else {
-        let data = geojsonData
+        var data = geojsonData
     }
     data.features.forEach(function (data) {
         Object.defineProperty(data.properties, "distance", {
@@ -386,7 +386,7 @@ function sortByDistance(selectedPoint) {
     while (listings.firstChild) {
         listings.removeChild(listings.firstChild);
     }
-    buildLocationList(geojsonData);
+    buildLocationList(data);
 }
 
 geocoder.on("result", function (ev) {
