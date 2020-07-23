@@ -313,6 +313,7 @@ function removeFilters() {
     let select = document.getElementsByTagName('select');
     let selectOption = [].slice.call(select);
     let checkboxOption = [].slice.call(input);
+    filteredGeojson.features = [];
 
     checkboxOption.forEach(function (checkbox) {
         if (checkbox.type == 'checkbox' && checkbox.checked == true) {
