@@ -356,7 +356,13 @@ const geocoder = new MapboxGeocoder({
 
 function sortByDistance(selectedPoint) {
     const options = { units: "miles" };
-    geojsonData.features.forEach(function (data) {
+    if (filteredGeojson.features.length > 0) {
+        let data = filteredGeojson
+    }
+    else {
+        let data = geojsonData
+    }
+    data.features.forEach(function (data) {
         Object.defineProperty(data.properties, "distance", {
             value: turf.distance(selectedPoint, data.geometry, options),
             writable: true,
@@ -367,7 +373,7 @@ function sortByDistance(selectedPoint) {
 
     });
 
-    geojsonData.features.sort(function (a, b) {
+    data.features.sort(function (a, b) {
         if (a.properties.distance > b.properties.distance) {
             return 1;
         }
